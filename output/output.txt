@@ -1,0 +1,1 @@
+{"statusCode": 200, "body": "File Content: Hello, LocalStack S3, by Lambda, Created by Bibhash!"}

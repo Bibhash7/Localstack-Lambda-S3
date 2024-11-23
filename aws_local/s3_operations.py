@@ -1,43 +1,32 @@
-import boto3
-from botocore.config import Config
+from aws_local.constants import EndPoint, SuccessMessage, ErrorMessage
+from aws_local.client_config import create_aws_local_service
 
-# LocalStack configuration
-localstack_endpoint = "http://localhost:4570"
 
-# S3 client configuration
-s3_client = boto3.client(
-    "s3",
-    aws_access_key_id="test",  # Dummy credentials for LocalStack
-    aws_secret_access_key="test",
-    endpoint_url=localstack_endpoint,
-    config=Config(signature_version="s3v4"),
-    region_name="us-east-1"
-)
-
-# Bucket name and file details
-bucket_name = "test-bucket"
-file_name = "example.txt"
-file_content = "Hello, LocalStack S3, by Lambda!"
-
+s3_client = create_aws_local_service("s3", EndPoint.LOCALSTACK_ENDPOINT)
 def create_bucket_if_not_exists(bucket_name):
-    """Create an S3 bucket if it doesn't already exist."""
+    """
+    Create an S3 bucket if it doesn't already exist.
+    :param bucket_name
+    :return None
+    """
     try:
         s3_client.head_bucket(Bucket=bucket_name)
-        print(f"Bucket '{bucket_name}' already exists.")
+        print(ErrorMessage.BUCKET_ALREADY_EXISTS.format(bucket_name))
     except:
-        print(f"Creating bucket '{bucket_name}'...")
+        print(SuccessMessage.CREATING_S3_BUCKET.format(bucket_name))
         s3_client.create_bucket(Bucket=bucket_name)
 
 def upload_file_to_s3(bucket_name, file_name, file_content):
-    """Upload a file to the specified S3 bucket."""
+    """
+    Upload a file to the specified S3 bucket.
+    :param bucket_name
+    :param file_name
+    :param file_content
+    :return None
+    """
     s3_client.put_object(
         Bucket=bucket_name,
         Key=file_name,
         Body=file_content
     )
-    print(f"Uploaded '{file_name}' to bucket '{bucket_name}'.")
-
-# Main execution
-if __name__ == "__main__":
-    create_bucket_if_not_exists(bucket_name)
-    upload_file_to_s3(bucket_name, file_name, file_content)
+    print(SuccessMessage.UPLOADING_CONTENT_TO_S3_BUCKET.format(file_name, bucket_name))
