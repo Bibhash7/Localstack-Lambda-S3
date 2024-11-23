@@ -1,5 +1,19 @@
 # Localstack-Lambda-S3
-It will create and upload content to the s3 bucket and read the content by lambda in localstack environment.
+This project demonstrates the integration of AWS services (S3 and Lambda) using LocalStack. It includes Python modules to:
+
+- Create an S3 bucket.
+- Upload a file to the S3 bucket with proper exception handling.
+- Deploy a Lambda function in LocalStack that reads the content of a file stored in S3.
+- The code is modular, scalable, and designed for easy extension.
+
+## Features
+- **S3 Bucket Operations:**
+        Creation of S3 buckets.
+- File upload with detailed error handling.
+- **Lambda Deployment:**
+        A Lambda function deployed to LocalStack that reads the content of a file from the S3 bucket.
+- **LocalStack Integration:**
+        Simulates AWS services locally for testing and development without incurring cloud costs.
 
 ## Project Structure
 ```plaintext
