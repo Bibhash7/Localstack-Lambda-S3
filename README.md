@@ -2,6 +2,7 @@
 It will create and upload content to the s3 bucket and read the content by lambda in localstack environment.
 
 ## Project Structure
+```plaintext
 ├── LocalStack-Lambda/
 |   ├── aws_local/
 |   |   ├── client_config.py                 # creates a aws local stack service
@@ -14,3 +15,4 @@ It will create and upload content to the s3 bucket and read the content by lambd
 ├── main.py                                  # Entry point of the application
 ├── docker-compose.yml                       # Docker Compose file for setting up development and production environments
 └── README.md                                # Project documentation
+```
