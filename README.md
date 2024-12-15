@@ -24,8 +24,11 @@ This project demonstrates the integration of AWS services (S3 and Lambda) using 
 |   |   ├── invoke_lambda_cmd.py             # Invoke the lambda 
 |   |   ├── lambda_read.py                   # Lambda file that is deployed to LocalStack
 |   |   ├── s3_operations.py                 # To create and upload content to s3 bucket
+|   |   ├── sqs_queue_operations.py          # To create an sqs queue and count no of messages
 |   ├── output/
 |   |   ├── output.txt                       # The output of the application
+|   ├── resources/
+|   |   ├── resources.txt                    # The resources utilized for this project
 ├── main.py                                  # Entry point of the application
 ├── docker-compose.yml                       # Docker Compose file for setting up development and production environments
 └── README.md                                # Project documentation
