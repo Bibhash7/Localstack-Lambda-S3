@@ -5,6 +5,7 @@ This project demonstrates the integration of AWS services (S3 and Lambda) using 
 - Upload a file to the S3 bucket with proper exception handling.
 - Deploy a Lambda function in LocalStack that reads the content of a file stored in S3.
 - The code is modular, scalable, and designed for easy extension.
+- S3 event trigger for SQS queue
 
 ## Features
 - **S3 Bucket Operations:**
