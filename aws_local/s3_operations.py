@@ -30,3 +30,17 @@ def upload_file_to_s3(bucket_name, file_name, file_content):
         Body=file_content
     )
     print(SuccessMessage.UPLOADING_CONTENT_TO_S3_BUCKET.format(file_name, bucket_name))
+
+def configure_s3_event_notifications(queue_arn, bucket_name):
+    s3_client.put_bucket_notification_configuration(
+        Bucket=bucket_name,
+        NotificationConfiguration={
+            'QueueConfigurations': [
+                {
+                    'QueueArn': queue_arn,
+                    'Events': ['s3:ObjectCreated:*']
+                }
+            ]
+        }
+    )
+    print("S3 event notifications configured.")
